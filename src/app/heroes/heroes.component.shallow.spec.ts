@@ -3,26 +3,24 @@ import { TestBed, ComponentFixture } from "@angular/core/testing";
 import { By } from "@angular/platform-browser";
 import { Observable } from "rxjs";
 import { of } from "rxjs";
-import { Hero } from "../hero";
 
+import { Hero } from "../hero";
 import { HeroService } from "../hero.service";
 import { HeroesComponent } from "./heroes.component";
+import _heroes from "../mock/heroes.json";
 
+let heroes: Hero[] = JSON.parse(JSON.stringify(_heroes));
 // Mock hero service
 class MockHeroService {
   getHeroes(): Observable<Hero[]> {
-    return of([
-      { id: 11, name: "Mr. Nice", strength: 10 },
-      { id: 12, name: "Narco", strength: 5 },
-      { id: 13, name: "Bombasto", strength: 8 },
-    ]);
+    return of(heroes);
   }
 }
 
 // Fake child component
 @Component({
   selector: "app-hero",
-  template: "<div></div> ",
+  template: "<div></div>",
 })
 class FakeHeroComponent {
   @Input() hero: Hero;
@@ -31,14 +29,8 @@ class FakeHeroComponent {
 describe("HeroesComponent (shallow test)", () => {
   let fixture: ComponentFixture<HeroesComponent>;
   let mockHeroService;
-  let heroes;
 
   beforeEach(() => {
-    heroes = [
-      { id: 11, name: "Mr. Nice", strength: 10 },
-      { id: 12, name: "Narco", strength: 5 },
-      { id: 13, name: "Bombasto", strength: 8 },
-    ];
     mockHeroService = jasmine.createSpyObj([
       "getHeroes",
       "addHero",
