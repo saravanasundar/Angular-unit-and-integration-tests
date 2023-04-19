@@ -28,7 +28,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "test:coverage": "ng test --no-watch --code-coverage"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^14.2.11",

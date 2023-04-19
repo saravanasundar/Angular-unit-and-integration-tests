@@ -1,3 +1,3 @@
 # Angular-unit-and-integration-tests
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/github-aqp6ns)
+To generate code coverage - ng test --no-watch --code-coverage or run npm run test:coverage
